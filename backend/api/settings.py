@@ -27,7 +27,7 @@ SECRET_KEY = 'cni(48#_*bkk2c57w=^k=bstna01859hz3p(xj@2ioie1msc('
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('DEBUG', default=True),
 
-ALLOWED_HOSTS = ['foodgram-project.sytes.net','backend', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['foodgram-project.sytes.net', 'backend', 'localhost', '127.0.0.1']
 
 
 # Application definition
