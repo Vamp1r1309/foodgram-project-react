@@ -1,11 +1,15 @@
-FROM python:3.7-slim
+FROM python:3.8.5 
+ 
+WORKDIR /code 
 
-WORKDIR /app
+COPY . .
 
-COPY requirements.txt ./
+RUN pip install --upgrade pip && pip install -r /code/requirements.txt
 
-RUN pip3 install -r requirements.txt --no-cache-dir
+ADD django_entrypoint.sh /django_entrypoint.sh
 
-COPY ./ ./
+RUN chmod a+x /django_entrypoint.sh
 
-CMD ["gunicorn", "foodgram.wsgi:application", "--bind", "0:8000"] 
+ENTRYPOINT ["/django_entrypoint.sh"] 
+
+CMD gunicorn api.wsgi:application --bind 0.0.0.0:8000 

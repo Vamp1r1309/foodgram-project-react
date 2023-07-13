@@ -1,3 +1,13 @@
+# media
+/media
+backend/foodgram/media/
+*requests.http
+
+# project-specific
+old_requirements.txt
+# logs
+
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -131,10 +141,9 @@ dmypy.json
 # .idea
 .idea
 
-backend/media
-backend/foodgram/media
-# backend/foodgram/static
 
-.DS_Store
-backend/.DS_Store
-backend/foodgram/.DS_Store
+# Project specific 
+my_temp_practicum.py
+.vscode/
+local_data_users.txt
+test_requests/

@@ -1,29 +1,35 @@
+"""test_project URL Configuration
+
+The `urlpatterns` list routes URLs to views. For more information please see:
+    https://docs.djangoproject.com/en/3.2/topics/http/urls/
+Examples:
+Function views
+    1. Add an import:  from other_app.views import Home
+    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
+Including another URLconf
+    1. Import the include() function: from django.urls import include, path
+    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
+"""
+from django.contrib import admin
 from django.urls import include, path
-from rest_framework import routers
-
-from .views import (CustomUserViewSet, FavoriteRecipeViewSet,
-                    IngredientViewSet, RecipeViewSet, ShoppingCartViewSet,
-                    SubscribeViewSet, TagViewSet)
-
-app_name = 'api'
-
-router = routers.DefaultRouter()
-router.register('users', CustomUserViewSet, basename='users')
-router.register('recipes', RecipeViewSet, basename='recipes')
-router.register('ingredients', IngredientViewSet, basename='ingredients')
-router.register('tags', TagViewSet, basename='tags')
-router.register(
-    r'users/(?P<user_id>\d+)/subscribe', SubscribeViewSet,
-    basename='subscribe')
-router.register(
-    r'recipes/(?P<recipe_id>\d+)/favorite', FavoriteRecipeViewSet,
-    basename='favorite')
-router.register(
-    r'recipes/(?P<recipe_id>\d+)/shopping_cart', ShoppingCartViewSet,
-    basename='shoppingcart')
+from drf_spectacular.views import (
+    SpectacularAPIView, SpectacularRedocView, SpectacularSwaggerView
+)
 
 urlpatterns = [
-    path('', include(router.urls)),
-    path('', include('djoser.urls')),
-    path('auth/', include('djoser.urls.authtoken')),
+    path('admin/', admin.site.urls),
+    path('api/', include('users.urls')),
+    path('api/', include('tags.urls')),
+    path('api/', include('recipes.urls')),
+    path('api/schema/', SpectacularAPIView.as_view(), name='schema'),
+    path(
+        'api/schema/redoc/',
+        SpectacularRedocView.as_view(url_name='schema'),
+        name='redoc'
+    ),
+    path(
+        'api/schema/swagger-ui/',
+        SpectacularSwaggerView.as_view(url_name='schema'),
+        name='swagger-ui'
+    ),
 ]
