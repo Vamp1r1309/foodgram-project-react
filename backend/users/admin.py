@@ -1,22 +1,14 @@
-
 from django.contrib import admin
-from django.contrib.auth.admin import UserAdmin
+from django.contrib.auth import get_user_model
 
-from .models import CustomUser, Follow
-
-
-class CustomUserAdmin(UserAdmin):
-    '''
-    add_form = CustomUserCreationForm
-    form = CustomUserChangeForm
-    '''
-    model = CustomUser
-    list_display = ('id', 'username', 'first_name', 'last_name',
-                    'email', 'password', 'is_staff', 'is_active',)
-    ordering = ('email',)
-    search_fields = ('username', 'email',)
-    ordering = ('email',)
+User = get_user_model()
 
 
-admin.site.register(CustomUser, CustomUserAdmin)
-admin.site.register(Follow)
+@admin.register(User)
+class UserAdmin(admin.ModelAdmin):
+    list_display = (
+        'id', 'username', 'email',
+        'first_name', 'last_name', 'date_joined',)
+    search_fields = ('email', 'username', 'first_name', 'last_name')
+    list_filter = ('date_joined', 'email', 'first_name')
+    empty_value_display = '-пусто-'

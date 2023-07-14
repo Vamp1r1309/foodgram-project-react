@@ -1,35 +1,34 @@
-"""test_project URL Configuration
-
-The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/3.2/topics/http/urls/
-Examples:
-Function views
-    1. Add an import:  from other_app.views import Home
-    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
-Including another URLconf
-    1. Import the include() function: from django.urls import include, path
-    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
-"""
-from django.contrib import admin
 from django.urls import include, path
-from drf_spectacular.views import (
-    SpectacularAPIView, SpectacularRedocView, SpectacularSwaggerView
-)
+from rest_framework.routers import DefaultRouter
+
+from api.views import (AddAndDeleteSubscribe, AddDeleteFavoriteRecipe,
+                       AddDeleteShoppingCart, AuthToken, IngredientsViewSet,
+                       RecipesViewSet, TagsViewSet, UsersViewSet, set_password)
+
+
+app_name = 'api'
+
+router = DefaultRouter()
+router.register('users', UsersViewSet)
+router.register('tags', TagsViewSet)
+router.register('ingredients', IngredientsViewSet)
+router.register('recipes', RecipesViewSet)
+
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('api/', include('users.urls')),
-    path('api/', include('tags.urls')),
-    path('api/', include('recipes.urls')),
-    path('api/schema/', SpectacularAPIView.as_view(), name='schema'),
-    path(
-        'api/schema/redoc/',
-        SpectacularRedocView.as_view(url_name='schema'),
-        name='redoc'
-    ),
-    path(
-        'api/schema/swagger-ui/',
-        SpectacularSwaggerView.as_view(url_name='schema'),
-        name='swagger-ui'
-    ),
+    path('auth/token/login/',
+         AuthToken.as_view(), name='login'),
+    path('users/set_password/',
+         set_password, name='set_password'),
+    path('users/<int:user_id>/subscribe/', AddAndDeleteSubscribe.as_view(),
+         name='subscribe'),
+    path('recipes/<int:recipe_id>/favorite/',
+         AddDeleteFavoriteRecipe.as_view(),
+         name='favorite_recipe'),
+    path('recipes/<int:recipe_id>/shopping_cart/',
+         AddDeleteShoppingCart.as_view(),
+         name='shopping_cart'),
+    path('', include(router.urls)),
+    path('', include('djoser.urls')),
+    path('auth/', include('djoser.urls.authtoken')),
 ]

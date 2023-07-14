@@ -1,13 +1,3 @@
-# media
-/media
-backend/foodgram/media/
-*requests.http
-
-# project-specific
-old_requirements.txt
-# logs
-
-
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -111,6 +101,7 @@ celerybeat.pid
 # SageMath parsed files
 *.sage.py
 
+
 # Environments
 .env
 .venv
@@ -140,10 +131,3 @@ dmypy.json
 
 # .idea
 .idea
-
-
-# Project specific 
-my_temp_practicum.py
-.vscode/
-local_data_users.txt
-test_requests/
