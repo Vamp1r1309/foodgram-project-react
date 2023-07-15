@@ -30,7 +30,7 @@ http://45.90.216.121/change-password - Изменить пароль
 
 * - примечание: данные ссылки будут работать около 1 месяца после пуша на мой github
 ```
-## Для проверки работы сайта были добавлены админ и 3 пользователя:
+## Для проверки работы сайта были добавлены админ и 2 пользователя:
 #### ***Админ:***
 ````
 почта: promining004@gmail.com
@@ -103,7 +103,7 @@ POSTGRES_USER=postgres
 POSTGRES_PASSWORD=postgres
 DB_HOST=db
 DB_PORT=5432
-ALLOWED_HOSTS=* #158.160.57.66
+ALLOWED_HOSTS=*
 TIME_ZONE=UTC
 USE_TZ=True
 # * - примечание: хост должен быть ALLOWED_HOSTS=*
@@ -117,11 +117,11 @@ DEBUG = True # os.getenv('DEBUG', default=True)
 # Должно быть так:
 ...
 backend:
-#  image: artyomvah/foodgram_backend # для запуская в облаке/на удаленном сервере
+#  image: gadjet14/foodgram_backend # для запуская в облаке/на удаленном сервере
   image: foodgram_backend # для запуская на локальном компе
   ...
 frontend:
-#   image: artyomvah/foodgram_frontend # для запуская в облаке/на удаленном сервере
+#   image: gadjet14/foodgram_frontend # для запуская в облаке/на удаленном сервере
   image: foodgram_frontend # для запуская на локальном компе
   ...
 * примечание - обязательно убедитесь что у вас на компе установлен докер
