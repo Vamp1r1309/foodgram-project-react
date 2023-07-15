@@ -1,6 +1,3 @@
-![example workflow](https://github.com/artyom-vah/foodgram-project-react/actions/workflows/main.yml/badge.svg) [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
-
-
 # Продуктовый помощник (Foodgram)
 
 ### Опиание проекта:  Foodgram - Продуктовый помощник
