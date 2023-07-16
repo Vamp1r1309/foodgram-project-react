@@ -51,7 +51,7 @@ class IngredientSerializer(serializers.ModelSerializer):
         model = Ingredient
         fields = '__all__'
 
-    
+
 class FavoriteSerializer(serializers.ModelSerializer):
     class Meta:
         model = Favorite
@@ -99,7 +99,9 @@ class UserSerializer(serializers.ModelSerializer):
             'id', 'username', 'email', 'first_name',
             'last_name', 'is_subscribed', 'password'
         )
-        extra_kwargs = {'password' : {'write_only': True}}
+        extra_kwargs = {
+            'password': {'write_only': True}
+        }
 
     def create(self, validated_data):
         validated_data['password'] = (
@@ -321,4 +323,3 @@ class FollowSerializer(serializers.ModelSerializer):
             recipes = Recipe.objects.filter(author=obj.author)
         serializer = RecipeSmallSerializer(recipes, many=True)
         return serializer.data
-        

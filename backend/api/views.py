@@ -167,7 +167,7 @@ class CartViewSet(viewsets.ModelViewSet):
             )
         serializer = RecipeSmallSerializer(recipe, many=False)
         return Response(data=serializer.data, status=HTTPStatus.CREATED)
-    
+
     def delete(self, request, *args, **kwargs):
         recipe = get_object_or_404(
             Recipe,

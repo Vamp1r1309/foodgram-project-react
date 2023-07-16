@@ -53,5 +53,6 @@ class RecipeFilter(django_filters.FilterSet):
             pk__in=(cart.recipe.pk for cart in carts)
         )
 
+
 class IngredientFilter(filters.SearchFilter):
     search_param = 'name'

@@ -41,7 +41,7 @@ class User(AbstractUser, PermissionsMixin):
 
     def __str__(self):
         return self.username
-        
+
 
 class Follow(models.Model):
     author = models.ForeignKey(

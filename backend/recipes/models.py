@@ -146,13 +146,14 @@ class Favorite(models.Model):
 
     class Meta:
         verbose_name = 'Избранное'
-        verbose_name_plural='Избранное'
+        verbose_name_plural = 'Избранное'
         constraints = [
             models.UniqueConstraint(
                 fields=['user', 'recipe'],
                 name='unique_favorite'
             )
         ]
+
 
 class Cart(models.Model):
     user = models.ForeignKey(
