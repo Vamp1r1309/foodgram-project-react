@@ -21,7 +21,7 @@ from rest_framework.response import Response
 
 from api.filters import IngredientFilter, RecipeFilter
 from recipes.models import (FavoriteRecipe, Ingredient, Recipe, ShoppingCart,
-                        Subscribe, Tag)
+                            Subscribe, Tag)
 from api.permissions import IsAdminOrReadOnly
 from api.serializers import (IngredientSerializer, RecipeReadSerializer,
                              RecipeWriteSerializer, SubscribeRecipeSerializer,
@@ -93,8 +93,9 @@ class AddDeleteFavoriteRecipe(GetObjectMixin, generics.RetrieveDestroyAPIView,
         self.request.user.favorite_recipe.recipe.remove(instance)
 
 
-class AddDeleteAndDownloadShoppingCart(GetObjectMixin, generics.RetrieveDestroyAPIView,
-                            generics.ListCreateAPIView):
+class AddDeleteAndDownloadShoppingCart(GetObjectMixin,
+                                       generics.RetrieveDestroyAPIView,
+                                       generics.ListCreateAPIView):
     """Добавление и удаление рецепта в/из корзины."""
 
     def create(self, request, *args, **kwargs):

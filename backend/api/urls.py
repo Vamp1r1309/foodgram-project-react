@@ -3,7 +3,7 @@ from rest_framework.routers import DefaultRouter
 
 from api.views import (AddAndDeleteSubscribe, AddDeleteFavoriteRecipe,
                        AddDeleteAndDownloadShoppingCart, AuthToken,
-                       IngredientsViewSet,RecipesViewSet, TagsViewSet,
+                       IngredientsViewSet, RecipesViewSet, TagsViewSet,
                        UsersViewSet, set_password)
 
 
