@@ -62,10 +62,10 @@ jobs:
           passphrase: ${{ secrets.PASSPHRASE }}
           script: |
             cd infra
-            docker-compose down -v
-            docker pull ${{ secrets.DOCKER_USERNAME }}/foodgram_frontend:latest
-            docker pull ${{ secrets.DOCKER_USERNAME }}/foodgram_backend:latest
-            docker-compose up -d --build
+            sudo docker-compose down -v
+            sudo docker pull ${{ secrets.DOCKER_USERNAME }}/foodgram_frontend:latest
+            sudo docker pull ${{ secrets.DOCKER_USERNAME }}/foodgram_backend:latest
+            sudo docker-compose up -d --build
 
 
 
