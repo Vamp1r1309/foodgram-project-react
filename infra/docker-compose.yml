@@ -10,8 +10,7 @@ services:
       - ./.env
 
   backend:
-    image: gadjet14/foodgram_backend # для запуская в облаке/на удаленном сервере
-    # image: foodgram_backend # для запуская на локальном компе
+    image: gadjet14/foodgram_backend
     restart: always
     volumes:
       - data_value:/code/data/
@@ -23,8 +22,7 @@ services:
       - ./.env
 
   frontend:
-    image: gadjet14/foodgram_frontend # для запуская в облаке/на удаленном сервере
-    # image: foodgram_frontend # для запуская на локальном компе
+    image: gadjet14/foodgram_frontend
     volumes:
       - ../frontend/:/app/result_build/
     depends_on:
