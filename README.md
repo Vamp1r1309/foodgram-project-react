@@ -42,7 +42,7 @@ http://45.90.216.121/
 
 1. Клонируйте репозиторий и перейдите в него в командной строке:
 ```bash
-git clone https://github.com/artyom-vah/foodgram-project-react
+git clone https://github.com/Vamp1r1309/foodgram-project-react.git
 ```
 2. Переходим в папку backend/:
 ```bash
